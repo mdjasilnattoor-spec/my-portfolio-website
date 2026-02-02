@@ -292,23 +292,24 @@ body {
 /* Skills Section */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    /* Smaller cards */
+    gap: 1.5rem;
 }
 
 .skill-card {
     background-color: var(--bg-color);
-    padding: 2rem;
+    padding: 1.5rem;
+    /* Reduced padding */
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.skill-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .skill-card i {
