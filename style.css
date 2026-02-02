@@ -1,12 +1,13 @@
 :root {
-    --primary-color: #6366f1;
-    /* Indigo */
-    --primary-dark: #4f46e5;
-    --secondary-color: #ec4899;
-    /* Pink */
+    --primary-color: #06b6d4;
+    /* Cyan/Teal - The color of data */
+    --primary-dark: #0891b2;
+    --secondary-color: #3b82f6;
+    /* Ocean Blue */
     --bg-color: #0f172a;
-    /* Dark Slate */
+    /* Deep Midnight Blue (Slate 900) */
     --bg-alt: #1e293b;
+    /* Lighter Blue (Slate 800) */
     --text-color: #f8fafc;
     --text-muted: #94a3b8;
     --white: #ffffff;
