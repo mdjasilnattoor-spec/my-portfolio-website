@@ -93,7 +93,8 @@ body {
     top: 0;
     width: 100%;
     padding: 1.5rem 0;
-    background-color: rgba(15, 23, 42, 0.9);
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Matrix Black */
     backdrop-filter: blur(10px);
     z-index: 1000;
     transition: var(--transition);
