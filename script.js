@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        
+
         // Animate hamburger
         hamburger.classList.toggle('toggle');
     });
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 targetElement.scrollIntoView({
@@ -62,6 +62,68 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
         } else {
             header.style.boxShadow = 'none';
+        }
+    });
+
+    // Contact Form Handling
+    const contactForm = document.getElementById('contactForm');
+    const successModal = document.getElementById('successModal');
+    const closeModal = document.querySelector('.close-modal');
+    const modalBtn = document.getElementById('modalBtn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = contactForm.querySelector('button');
+            const originalBtnText = btn.textContent;
+
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    contactForm.reset();
+                    if (successModal) successModal.classList.add('active');
+                } else {
+                    alert('Oops! There was a problem submitting your form');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Oops! There was a problem submitting your form');
+            } finally {
+                btn.textContent = originalBtnText;
+                btn.disabled = false;
+            }
+        });
+    }
+
+    // Close Modal Functions
+    function closeSuccessModal() {
+        if (successModal) {
+            successModal.classList.remove('active');
+        }
+    }
+
+    if (closeModal) {
+        closeModal.addEventListener('click', closeSuccessModal);
+    }
+
+    if (modalBtn) {
+        modalBtn.addEventListener('click', closeSuccessModal);
+    }
+
+    // Close on click outside
+    window.addEventListener('click', (e) => {
+        if (e.target === successModal) {
+            closeSuccessModal();
         }
     });
 });
